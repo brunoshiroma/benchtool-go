@@ -10,7 +10,7 @@ WORKDIR /bench
 COPY . .
 #because of go.mod
 RUN unset GOPATH
-RUN CGO_ENABLED=0 GOOS=linux go build -o benchtool-go -a -ldflags '-extldflags "-static"' cmd/go-proxy/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o benchtool-go -a -ldflags '-extldflags "-static"' cmd/benchtool-go/main.go
 
 
 FROM --platform=$TARGETPLATFORM alpine AS runtime
