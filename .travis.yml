@@ -53,10 +53,11 @@ jobs:
       arch: amd64
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker buildx build --platform linux/arm/v7 -t brunoshiroma/benchtool-go:armv7-latest --push .
-        - docker buildx build --platform linux/arm/v6 -t brunoshiroma/benchtool-go:armv6-latest --push .
+        #- docker buildx build --platform linux/arm/v7 -t brunoshiroma/benchtool-go:armv7-latest --push .
+        #- docker buildx build --platform linux/arm/v6 -t brunoshiroma/benchtool-go:armv6-latest --push .
         - docker buildx build --platform linux/amd64 -t brunoshiroma/benchtool-go:amd64-latest --push .
-        - docker buildx build --platform linux/arm64/v8 -t brunoshiroma/benchtool-go:aarch64-latest --push .
-        - docker buildx build --platform linux/386 -t brunoshiroma/benchtool-go:386-latest --push .
-        - docker manifest create brunoshiroma/benchtool-go:latest brunoshiroma/benchtool-go:386-latest brunoshiroma/benchtool-go:armv7-latest brunoshiroma/benchtool-go:armv6-latest brunoshiroma/benchtool-go:amd64-latest brunoshiroma/benchtool-go:aarch64-latest
+        #- docker buildx build --platform linux/arm64/v8 -t brunoshiroma/benchtool-go:aarch64-latest --push .
+        #- docker buildx build --platform linux/386 -t brunoshiroma/benchtool-go:386-latest --push .
+        #- docker manifest create brunoshiroma/benchtool-go:latest brunoshiroma/benchtool-go:386-latest brunoshiroma/benchtool-go:armv7-latest brunoshiroma/benchtool-go:armv6-latest brunoshiroma/benchtool-go:amd64-latest brunoshiroma/benchtool-go:aarch64-latest
+        docker manifest create brunoshiroma/benchtool-go:latest brunoshiroma/benchtool-go:amd64-latest
         - docker manifest push brunoshiroma/benchtool-go:latest
