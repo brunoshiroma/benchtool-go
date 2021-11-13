@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM golang:alpine AS build-base
+FROM golang:alpine AS build-base
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN apk add build-base
@@ -13,7 +13,7 @@ RUN unset GOPATH
 RUN CGO_ENABLED=0 GOOS=linux go build -o benchtool-go -a -ldflags '-extldflags "-static"' cmd/benchtool-go/main.go
 
 
-FROM --platform=$TARGETPLATFORM alpine AS runtime
+FROM alpine AS runtime
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
