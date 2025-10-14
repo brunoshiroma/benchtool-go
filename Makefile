@@ -1,5 +1,5 @@
 #ANDROID_SDK=/SDK_HOME
-#NDK_BIN=$(ANDROID_SDK)/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin
+#NDK_BIN=/workspaces/benchtool-go/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin
 
 build:
 	go build cmd/benchtool-go/main.go
@@ -33,7 +33,7 @@ android-386:
 android-x64:
 	CGO_ENABLED=1 \
 	GOOS=android \
-	GOARCH=386 \
+	GOARCH=amd64 \
 	CC=$(NDK_BIN)/x86_64-linux-android31-clang \
 	go build -buildmode=c-shared -o benchtool-go-lib-android-x64.so pkg/lib.go
 
