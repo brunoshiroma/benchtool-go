@@ -18,3 +18,5 @@
 # project binaries
 benchtool-go-lib*.h
 benchtool-go-lib*.so
+
+android-ndk-r*
