@@ -1,5 +1,5 @@
 #ANDROID_SDK=/SDK_HOME
-#NDK_BIN=/workspaces/benchtool-go/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin
+#NDK_BIN=/workspaces/benchtool-go/android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin
 
 build:
 	go build cmd/benchtool-go/main.go
@@ -13,7 +13,7 @@ android-arm64:
 	GOOS=android \
 	GOARCH=arm64 \
 	CC=$(NDK_BIN)/aarch64-linux-android31-clang \
-	go build -buildmode=c-shared -o benchtool-go-lib-android-arm64.so pkg/lib.go
+	go build -gccgoflags "-Wl,-z,max-page-size=16384" -buildmode=c-shared -o benchtool-go-lib-android-arm64.so pkg/lib.go
 
 android-armv7:
 	CGO_ENABLED=1 \
